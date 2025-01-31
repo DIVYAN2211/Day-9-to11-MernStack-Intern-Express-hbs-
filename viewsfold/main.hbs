@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>MONGODB</title>
+    </head>
+    <body>
+
+         <h1>MERNSTACK INTERN</h1>
+         {{#if empid}}
+        <h3>Edit Form</h3>
+        <form action="/updateinfo/{{empid}}" method="POST">
+        <label for="">Id</label>
+        <input type="text" name="eid" value="{{edit_emp.empid}}">
+        <label for=""> Name </label>
+        <input type="text" name="ename" value ="{{edit_emp.empname}}">
+        <input type ="submit">
+        </form>
+
+        <br><br>
+        {{else}}
+        <h3>Form Creation</h3>
+        <form action="/empinfo" method="POST">
+        <label for="">Id</label>
+        <input type="text" name="eid">
+        <label for=""> Name </label>
+        <input type="text" name="ename">
+        <input type ="submit">
+        </form>{{/if}}
+ <h2>Datas....</h2>
+ <ul>
+    {{#each datas}}
+    
+    <li>{{this.empid}}-{{this.empname}}
+        <a href="/?edit_idd={{this._id}}">Edit</a> 
+        <a href="/?delete_idd={{this._id}}" onclick="return confirm('do you want to delete')">Delete</a>
+    </li>
+    {{/each}}
+ </ul>
+ <p>{{msg}}</p>
+    </body>
+    </html>
